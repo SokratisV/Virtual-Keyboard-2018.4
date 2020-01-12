@@ -32,7 +32,7 @@ namespace VirtualKeyboard
         {
             CurrentLanguage = CurrentLanguage == VirtualKeyboard.KeyboardLanguage.English ? VirtualKeyboard.KeyboardLanguage.Greek : VirtualKeyboard.KeyboardLanguage.English;
 
-            foreach (var child in keyboardPanel.GetComponentsInChildren<ButtonNamer>())
+            foreach (var child in keyboardPanel.GetComponentsInChildren<KeyboardManager>())
             {
                 child.ChangeLanguage();
             }

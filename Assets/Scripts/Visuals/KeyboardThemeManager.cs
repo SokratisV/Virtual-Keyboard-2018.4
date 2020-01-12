@@ -20,8 +20,6 @@ namespace VirtualKeyboard
             mediumKeysNormalColor, mediumKeysDangerColor, mediumKeysConfirmColor,
             spacebarColor, textColor;
 
-
-
         public Color GetColor(ThemeComponents component)
         {
             switch (component)
@@ -84,22 +82,21 @@ namespace VirtualKeyboard
                     themable.ApplyTheme(colorPallet);
             }
         }
-        public void ChangeToTheme(Themes theme)
+        public void ChangeToCurrentTheme()
         {
-            currentTheme = theme;
             foreach (var themable in GetComponentsInChildren<ThemeAssign>())
             {
                 if (themes.TryGetValue(currentTheme, out var colorPallet))
                     themable.ApplyTheme(colorPallet);
             }
         }
-#if UNITY_EDITOR
-        private void Update()
-        {
-            if (Application.isPlaying) return;
-            ChangeToTheme(currentTheme);
-        }
-#endif
+        // #if UNITY_EDITOR
+        //         private void Update()
+        //         {
+        //             if (Application.isPlaying) return;
+        //             ChangeToTheme(currentTheme);
+        //         }
+        // #endif
     }
 }
 

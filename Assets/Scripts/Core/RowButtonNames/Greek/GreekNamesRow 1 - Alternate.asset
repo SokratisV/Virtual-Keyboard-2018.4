@@ -10,16 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95939f4c4dbb7f74da3827cc1740065a, type: 3}
-  m_Name: GreekNamesRow 4 - Accent
+  m_Name: GreekNamesRow 1 - Alternate
   m_EditorClassIdentifier: 
   buttonNames:
-  - ;
-  - "\u03C2"
-  - "\u0388"
-  - "\u03A1"
-  - "\u03A4"
-  - "\u038E"
-  - "\u0398"
-  - "\u038A"
-  - "\u038C"
-  - "\u03A0"
+  - "\u0394\u03B9\u03B1\u03B3\u03C1\u03B1\u03C6\u03AE \u038C\u03BB\u03C9\u03BD"
+  - ' '
+  - Enter

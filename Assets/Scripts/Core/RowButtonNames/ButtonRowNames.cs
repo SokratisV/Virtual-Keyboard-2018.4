@@ -2,7 +2,7 @@
 
 namespace VirtualKeyboard
 {
-    [CreateAssetMenu(fileName = "ButtonRowNames", menuName = "Virtual Keyboard/ButtonRowNames", order = 0)]
+    [CreateAssetMenu(fileName = "New Language Row", menuName = "Virtual Keyboard/Keyboard Language Row", order = 0)]
     public class ButtonRowNames : ScriptableObject
     {
         public string[] buttonNames;

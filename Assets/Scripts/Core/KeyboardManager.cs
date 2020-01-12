@@ -6,7 +6,7 @@ namespace VirtualKeyboard
 {
     [ExecuteInEditMode]
     [DisallowMultipleComponent]
-    public partial class ButtonNamer : MonoBehaviour
+    public partial class KeyboardManager : MonoBehaviour
     {
         [SerializeField] ButtonRowNames englishButtons;
         [SerializeField] ButtonRowNames greekButtons;
@@ -59,7 +59,7 @@ namespace VirtualKeyboard
         {
             capsToggle = !capsToggle;
 
-            foreach (var buttonNamerScript in transform.parent.GetComponentsInChildren<ButtonNamer>())
+            foreach (var buttonNamerScript in transform.parent.GetComponentsInChildren<KeyboardManager>())
             {
                 buttonNamerScript.RefreshKeyboard();
             }
@@ -80,7 +80,7 @@ namespace VirtualKeyboard
             {
                 ChangeActiveLanguage.CurrentLanguage = VirtualKeyboard.KeyboardLanguage.Greek;
             }
-            foreach (var buttonNamerScript in transform.parent.GetComponentsInChildren<ButtonNamer>())
+            foreach (var buttonNamerScript in transform.parent.GetComponentsInChildren<KeyboardManager>())
             {
                 buttonNamerScript.RefreshKeyboard();
             }

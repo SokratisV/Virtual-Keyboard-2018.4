@@ -1102,6 +1102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: m
       objectReference: {fileID: 0}
+    - target: {fileID: 2165599778318708862, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: m_Name
+      value: q
+      objectReference: {fileID: 0}
     - target: {fileID: 2165599778414634505, guid: 4c73f4f9a3d623b4a815d17285fd2652,
         type: 3}
       propertyPath: m_Name
@@ -1126,6 +1131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: o
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165599778969391158, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: m_Name
+      value: v
       objectReference: {fileID: 0}
     - target: {fileID: 2165599779048315233, guid: 4c73f4f9a3d623b4a815d17285fd2652,
         type: 3}
@@ -1257,6 +1267,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keyboard Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5770778812907897554, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: themes.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770778812907897554, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: themes.reorderableList.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770778812907897554, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: currentTheme
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7247291241743688504, guid: 4c73f4f9a3d623b4a815d17285fd2652,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1376,6 +1401,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842341800064729883, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: m_Name
+      value: Clear All
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842341800197254401, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: m_Name
+      value: Caps Lock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842341800532100332, guid: 4c73f4f9a3d623b4a815d17285fd2652,
+        type: 3}
+      propertyPath: m_Name
+      value: Backspace
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c73f4f9a3d623b4a815d17285fd2652, type: 3}

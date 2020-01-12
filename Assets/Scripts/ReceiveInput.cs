@@ -11,7 +11,8 @@ namespace VirtualKeyboard
     {
         {"διαγραφή", "backspace"},
         {"διαγραφή όλων","clear all"},
-        {"κεφαλαία", "caps lock"}
+        {"κεφαλαία", "caps lock"},
+        {"τόνοι", "shift"}
     };
 
         private void OnEnable()
