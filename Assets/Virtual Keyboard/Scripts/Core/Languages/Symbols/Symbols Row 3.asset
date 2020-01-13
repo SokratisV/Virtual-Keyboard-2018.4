@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95939f4c4dbb7f74da3827cc1740065a, type: 3}
-  m_Name: None 5 - Alternate
+  m_Name: Symbols Row 3
   m_EditorClassIdentifier: 
   buttonNames:
-  - "\u039A\u03B5\u03C6\u03B1\u03BB\u03B1\u03AF\u03B1"
-  - Y
-  - Y
-  - Y
-  - Y
-  - Y
-  - Y
-  - Y
-  - Y
-  - Y
+  - Caps Lock
+  - ':'
+  - ;
+  - '"'
+  - ''''
+  - '{'
+  - '}'
+  - '['
+  - ']'
+  - _

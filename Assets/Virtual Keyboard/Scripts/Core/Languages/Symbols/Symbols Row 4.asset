@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95939f4c4dbb7f74da3827cc1740065a, type: 3}
-  m_Name: None 3 - Alternate
+  m_Name: Symbols Row 4
   m_EditorClassIdentifier: 
   buttonNames:
-  - Y
-  - Y
-  - Y
+  - +
+  - '-'
+  - '*'
+  - /
+  - =
+  - _
+  - '?'
+  - .
+  - ','
+  - '|'

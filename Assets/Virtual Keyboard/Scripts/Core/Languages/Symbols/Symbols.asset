@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddf57ae603a43d747b3416e96eea063f, type: 3}
-  m_Name: English
+  m_Name: Symbols
   m_EditorClassIdentifier: 
   rowNames:
-  - {fileID: 11400000, guid: 04208b375e3058c41868715f9f71df8a, type: 2}
-  - {fileID: 11400000, guid: 93a47393fe34b3c44b41c90112613472, type: 2}
-  - {fileID: 11400000, guid: 7bfcee0412fb33c41a0d410756f9748f, type: 2}
-  - {fileID: 11400000, guid: dc55ffde701ddd245878ef120a7139c9, type: 2}
-  - {fileID: 11400000, guid: 4e62019d25abf44448fe6b6649dd1ff1, type: 2}
+  - {fileID: 11400000, guid: b089a9d2765fba14fa4970bb8d7ba21f, type: 2}
+  - {fileID: 11400000, guid: 6766ac126470e3a4a816ef73927b78b0, type: 2}
+  - {fileID: 11400000, guid: d88ae082182dd4a428b2b3bf71bfc39f, type: 2}
+  - {fileID: 11400000, guid: b7be671988514f4479d09ba8c71e238c, type: 2}
+  - {fileID: 11400000, guid: c1f62f80d6842e54884f095c72a9f61d, type: 2}
   alternateRowNames: []

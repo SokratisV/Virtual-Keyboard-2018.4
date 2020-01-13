@@ -13,6 +13,7 @@ namespace VirtualKeyboard
             ChangeButtonText(buttonNames, capsLockOn);
             NameButtonObject(buttonNames, capsLockOn);
         }
+
         /*
         * Changes the text field of each button. Includes upper/lower case conversion.
         */
@@ -31,6 +32,7 @@ namespace VirtualKeyboard
                 }
             }
         }
+
         /*
         * Changes the object's name in the editor to match that of its text.
         */

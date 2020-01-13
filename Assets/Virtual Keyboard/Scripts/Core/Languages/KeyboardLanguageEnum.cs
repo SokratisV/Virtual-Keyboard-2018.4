@@ -4,7 +4,8 @@
     {
         None,
         English,
-        Greek
+        Greek,
+        Symbols
     }
 }
 

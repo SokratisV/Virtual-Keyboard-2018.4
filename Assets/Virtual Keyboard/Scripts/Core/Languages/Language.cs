@@ -10,15 +10,13 @@
 
         public ButtonRowNames GetRow(int row, bool alternate)
         {
-            // Debug.Assert(rowNames.Length != alternateRowNames.Length, $"{name} is not setup correctly (alternate rows)");
-            if (alternate) return alternateRowNames[row];
+            if (alternate && alternateRowNames.Length == rowNames.Length) return alternateRowNames[row];
             return rowNames[row];
         }
 
         public ButtonRowNames[] GetAllRows(bool alternate)
         {
-            // Debug.Assert(rowNames.Length != alternateRowNames.Length, $"{name} is not setup correctly (alternate rows)");
-            if (alternate) return alternateRowNames;
+            if (alternate && alternateRowNames.Length == rowNames.Length) return alternateRowNames;
             return rowNames;
         }
     }
