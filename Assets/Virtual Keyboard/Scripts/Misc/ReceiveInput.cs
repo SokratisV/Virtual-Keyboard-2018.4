@@ -79,7 +79,7 @@ namespace VirtualKeyboard
             textComponent.text += " ";
         }
 
-        private void DeleteEverything()
+        public void DeleteEverything()
         {
             textComponent.text = "";
         }
