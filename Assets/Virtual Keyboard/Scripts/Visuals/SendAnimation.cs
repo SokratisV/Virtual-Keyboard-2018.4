@@ -16,7 +16,7 @@ namespace VirtualKeyboard
 
         public void AnimateText()
         {
-            animator.Play("TextSendAnimation");
+            animator?.Play("TextSendAnimation");
         }
 
         // Animation event

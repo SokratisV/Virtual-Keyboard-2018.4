@@ -9,8 +9,8 @@ namespace VirtualKeyboard
         [SerializeField] KeyboardLanguageEnum currentLanguage = KeyboardLanguageEnum.English;
         [System.Serializable] class LanguagesDictionary : SerializableDictionaryBase<KeyboardLanguageEnum, Language> { };
         [SerializeField] LanguagesDictionary languagesDictionary = new LanguagesDictionary();
-        [SerializeField] bool capsToggle = false, alternateKeysToggle = false;
-        [SerializeField] KeyboardLanguageEnum previousLanguage = KeyboardLanguageEnum.None;
+        bool capsToggle = false, alternateKeysToggle = false;
+        KeyboardLanguageEnum previousLanguage = KeyboardLanguageEnum.None;
 
 #if UNITY_EDITOR
         [System.Runtime.InteropServices.DllImport("USER32.dll")] public static extern short GetKeyState(int nVirtKey);
@@ -55,7 +55,7 @@ namespace VirtualKeyboard
         }
 
         /*
-        * Separate method to be called from Unity because you can't have Enums as params in Inspector OnClicks.
+        * Separate method to be assigned in the editor because you can't have Enums as params in editor OnClicks.
         */
         public void ToggleSymbols()
         {
