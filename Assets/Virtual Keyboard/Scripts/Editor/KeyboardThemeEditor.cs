@@ -1,16 +1,17 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Virtual_Keyboard.Scripts.Visuals;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Editor
 {
     [CustomEditor(typeof(KeyboardThemeManager))]
-    public class KeyboardThemeEditor : Editor
+    public class KeyboardThemeEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            KeyboardThemeManager manager = (KeyboardThemeManager)target;
+            var manager = (KeyboardThemeManager)target;
 
             if (GUILayout.Button("Apply Theme"))
             {

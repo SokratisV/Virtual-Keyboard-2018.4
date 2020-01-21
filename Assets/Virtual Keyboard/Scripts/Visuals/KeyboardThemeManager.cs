@@ -1,6 +1,7 @@
-﻿using RotaryHeart.Lib.SerializableDictionary;
-using UnityEngine;
-namespace VirtualKeyboard
+﻿using UnityEngine;
+using Virtual_Keyboard.Rotary_Heart.SerializableDictionary;
+
+namespace Virtual_Keyboard.Scripts.Visuals
 {
     public enum ThemeComponents
     {
@@ -46,7 +47,7 @@ namespace VirtualKeyboard
     [ExecuteInEditMode]
     public class KeyboardThemeManager : MonoBehaviour
     {
-        public enum Themes
+        private enum Themes
         {
             Dark,
             Light,
@@ -63,8 +64,8 @@ namespace VirtualKeyboard
 
         public Color GetComponentColor(ThemeComponents component)
         {
-            themes.TryGetValue(currentTheme, out var _colorPallet);
-            return _colorPallet.GetColor(component);
+            themes.TryGetValue(currentTheme, out var colorPallet);
+            return colorPallet.GetColor(component);
         }
 
         public void ChangeToNextTheme()
@@ -74,19 +75,19 @@ namespace VirtualKeyboard
             {
                 currentTheme = Themes.Dark;
             }
-            foreach (var themable in GetComponentsInChildren<ThemeAssign>())
+            foreach (var themeable in GetComponentsInChildren<ThemeAssign>())
             {
                 if (themes.TryGetValue(currentTheme, out var colorPallet))
-                    themable.ApplyTheme(colorPallet);
+                    themeable.ApplyTheme(colorPallet);
             }
         }
 
         public void ChangeToCurrentTheme()
         {
-            foreach (var themable in GetComponentsInChildren<ThemeAssign>())
+            foreach (var themeable in GetComponentsInChildren<ThemeAssign>())
             {
                 if (themes.TryGetValue(currentTheme, out var colorPallet))
-                    themable.ApplyTheme(colorPallet);
+                    themeable.ApplyTheme(colorPallet);
             }
         }
     }

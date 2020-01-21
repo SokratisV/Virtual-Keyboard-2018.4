@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Visuals
 {
     public class ChangeColorOverTime : MonoBehaviour
     {
         [SerializeField] Gradient gradient;
         [SerializeField] float duration = 7f;
 
-        Image backgroundImage;
+        Image _backgroundImage;
 
         private void Start()
         {
-            backgroundImage = GetComponent<Image>();
+            _backgroundImage = GetComponent<Image>();
         }
         private void Update()
         {
             float t = Mathf.PingPong(Time.time / duration, 1f);
-            backgroundImage.color = gradient.Evaluate(t);
+            _backgroundImage.color = gradient.Evaluate(t);
         }
     }
 

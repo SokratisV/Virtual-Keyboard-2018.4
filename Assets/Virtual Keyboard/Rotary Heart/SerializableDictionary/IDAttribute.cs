@@ -1,4 +1,4 @@
-﻿namespace RotaryHeart.Lib.SerializableDictionary
+﻿namespace Virtual_Keyboard.Rotary_Heart.SerializableDictionary
 {
     [System.AttributeUsage(System.AttributeTargets.Field)]
     public class IDAttribute : System.Attribute

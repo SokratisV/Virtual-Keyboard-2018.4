@@ -3,8 +3,9 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using Virtual_Keyboard.Rotary_Heart.SerializableDictionary.References;
 
-namespace RotaryHeart.Lib.SerializableDictionary
+namespace Virtual_Keyboard.Rotary_Heart.SerializableDictionary
 {
     /// <summary>
     /// This class is only used to be able to draw the custom property drawer
@@ -12,7 +13,7 @@ namespace RotaryHeart.Lib.SerializableDictionary
     public abstract class DrawableDictionary
     {
         [UnityEngine.HideInInspector]
-        public ReorderableList reorderableList = null;
+        public ReorderableList.ReorderableList reorderableList = null;
         [UnityEngine.HideInInspector]
         public RequiredReferences reqReferences;
         public bool isExpanded;

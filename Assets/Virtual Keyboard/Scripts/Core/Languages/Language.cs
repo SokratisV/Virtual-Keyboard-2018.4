@@ -1,7 +1,7 @@
-﻿namespace VirtualKeyboard
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace Virtual_Keyboard.Scripts.Core.Languages
+{
     [CreateAssetMenu(fileName = "New Language", menuName = "Virtual Keyboard/Keyboard Language", order = 0)]
     public class Language : ScriptableObject
     {
@@ -12,12 +12,6 @@
         {
             if (alternate && alternateRowNames.Length == rowNames.Length) return alternateRowNames[row];
             return rowNames[row];
-        }
-
-        public ButtonRowNames[] GetAllRows(bool alternate)
-        {
-            if (alternate && alternateRowNames.Length == rowNames.Length) return alternateRowNames;
-            return rowNames;
         }
     }
 }

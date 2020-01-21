@@ -1,16 +1,17 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using Virtual_Keyboard.Scripts.Core;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Editor
 {
     [CustomEditor(typeof(KeyboardManager))]
-    public class KeyboardManagerEditor : Editor
+    public class KeyboardManagerEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            KeyboardManager manager = (KeyboardManager)target;
+            var manager = (KeyboardManager)target;
 
             if (GUILayout.Button("Refresh Keyboard"))
             {

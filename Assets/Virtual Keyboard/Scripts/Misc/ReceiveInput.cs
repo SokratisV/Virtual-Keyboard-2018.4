@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Virtual_Keyboard.Scripts.Core;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Misc
 {
     public class ReceiveInput : MonoBehaviour
     {
-        TextMeshProUGUI textComponent;
-        Dictionary<string, string> greekToEnglishDict = new Dictionary<string, string>()
+        TextMeshProUGUI _textComponent;
+        readonly Dictionary<string, string> _greekToEnglishDict = new Dictionary<string, string>()
     {
         {"διαγραφή", "backspace"},
         {"διαγραφή όλων","clear all"},
@@ -17,24 +18,23 @@ namespace VirtualKeyboard
 
         private void OnEnable()
         {
-            KeyPressEventSender.onKeyPress += Receive;
+            KeyPressEventSender.OnKeyPress += Receive;
         }
 
         private void OnDisable()
         {
-            KeyPressEventSender.onKeyPress -= Receive;
+            KeyPressEventSender.OnKeyPress -= Receive;
         }
 
         private void Start()
         {
-            textComponent = GetComponentInChildren<TextMeshProUGUI>();
+            _textComponent = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        public void Receive(string value)
+        private void Receive(string value)
         {
-            string newValue;
             //check if it exists in the dictionary
-            if (!greekToEnglishDict.TryGetValue(value.ToLower(), out newValue))
+            if (!_greekToEnglishDict.TryGetValue(value.ToLower(), out var newValue))
             {
                 newValue = value;
             }
@@ -63,26 +63,25 @@ namespace VirtualKeyboard
 
         private void PrintLetter(string letter)
         {
-            textComponent.text += letter;
+            _textComponent.text += letter;
         }
 
         private void DeleteLetter()
         {
-            var text = textComponent.text;
+            var text = _textComponent.text;
             if (text.Length <= 0) return;
 
-            textComponent.text = text.Remove(text.Length - 1, 1);
+            _textComponent.text = text.Remove(text.Length - 1, 1);
         }
 
         private void AddSpace()
         {
-            textComponent.text += " ";
+            _textComponent.text += " ";
         }
 
         public void DeleteEverything()
         {
-            textComponent.text = "";
+            _textComponent.text = "";
         }
     }
-
 }

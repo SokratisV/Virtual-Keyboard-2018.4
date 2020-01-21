@@ -1,4 +1,4 @@
-﻿namespace RotaryHeart.Lib.SerializableDictionary
+﻿namespace Virtual_Keyboard.Rotary_Heart.SerializableDictionary
 {
     /// <summary>
     /// Attribute used to force drawing a key as a property

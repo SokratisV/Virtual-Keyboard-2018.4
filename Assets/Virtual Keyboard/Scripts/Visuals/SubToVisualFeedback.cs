@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Visuals
 {
     public class SubToVisualFeedback : MonoBehaviour
     {
         void Start()
         {
-            VisualFeedback feedbackScript = GetComponentInParent<VisualFeedback>();
+            var feedbackScript = GetComponentInParent<VisualFeedback>();
             if (feedbackScript == null) { return; }
             GetComponent<Button>().onClick.AddListener(() => feedbackScript.KeyPressedFeedback(GetComponent<Button>()));
         }

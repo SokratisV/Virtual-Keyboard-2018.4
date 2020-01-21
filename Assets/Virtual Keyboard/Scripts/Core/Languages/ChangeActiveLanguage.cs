@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Core.Languages
 {
     public class ChangeActiveLanguage : MonoBehaviour
     {
         [SerializeField] Image leftImage, rightImage;
         [Range(0, 1)] [SerializeField] float transparencyValue = .3f;
         [SerializeField] bool leftPanelActive = false, rightPanelActive = true;
+        KeyboardManager _keyboardManager;
+
+        private void Start()
+        {
+            _keyboardManager = FindObjectOfType<KeyboardManager>();
+        }
 
         private void Update()
         {
@@ -22,7 +28,7 @@ namespace VirtualKeyboard
 
         public void ChangeLanguage()
         {
-            FindObjectOfType<KeyboardManager>().ChangeLanguage();
+            _keyboardManager.ChangeLanguage();
             ToggleTransparency(leftImage, ref leftPanelActive);
             ToggleTransparency(rightImage, ref rightPanelActive);
         }

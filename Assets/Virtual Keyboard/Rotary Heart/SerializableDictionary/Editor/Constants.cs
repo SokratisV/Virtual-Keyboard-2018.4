@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace RotaryHeart.Lib.SerializableDictionary
+namespace Virtual_Keyboard.Rotary_Heart.SerializableDictionary.Editor
 {
     public sealed class Constants
     {

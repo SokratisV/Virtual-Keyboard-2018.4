@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using TMPro;
-using System.Collections.Generic;
+using UnityEngine;
+using Virtual_Keyboard.Scripts.Core;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Misc
 {
     class ReceiveInputField : MonoBehaviour
     {
-        TMP_InputField inputText;
-        bool isSubscribed = false;
+        TMP_InputField _inputText;
+        bool _isSubscribed = false;
 
-        Dictionary<string, string> greekToEnglishDict = new Dictionary<string, string>()
+        readonly Dictionary<string, string> _greekToEnglishDict = new Dictionary<string, string>()
     {
         {"διαγραφή", "backspace"},
         {"διαγραφή όλων","clear all"},
@@ -17,32 +18,29 @@ namespace VirtualKeyboard
         {"τόνοι", "shift"}
     };
 
-        public bool IsSubscribed { get => isSubscribed; }
+        public bool IsSubscribed { get => _isSubscribed; }
 
         private void Start()
         {
-            inputText = GetComponent<TMP_InputField>();
+            _inputText = GetComponent<TMP_InputField>();
         }
 
         public void Subscribe()
         {
-            print("subbed");
-            isSubscribed = true;
-            KeyPressEventSender.onKeyPress += Receive;
+            _isSubscribed = true;
+            KeyPressEventSender.OnKeyPress += Receive;
         }
 
         public void Unsubscribe()
         {
-            print("unsubbed");
-            isSubscribed = false;
-            KeyPressEventSender.onKeyPress -= Receive;
+            _isSubscribed = false;
+            KeyPressEventSender.OnKeyPress -= Receive;
         }
 
         public void Receive(string value)
         {
-            string newValue;
             //check if it exists in the dictionary
-            if (!greekToEnglishDict.TryGetValue(value.ToLower(), out newValue))
+            if (!_greekToEnglishDict.TryGetValue(value.ToLower(), out var newValue))
             {
                 newValue = value;
             }
@@ -71,25 +69,25 @@ namespace VirtualKeyboard
 
         private void PrintLetter(string letter)
         {
-            inputText.text += letter;
+            _inputText.text += letter;
         }
 
         private void DeleteLetter()
         {
-            var text = inputText.text;
+            var text = _inputText.text;
             if (text.Length <= 0) return;
 
-            inputText.text = text.Remove(text.Length - 1, 1);
+            _inputText.text = text.Remove(text.Length - 1, 1);
         }
 
         private void AddSpace()
         {
-            inputText.text += " ";
+            _inputText.text += " ";
         }
 
         public void DeleteEverything()
         {
-            inputText.text = "";
+            _inputText.text = "";
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Virtual_Keyboard.Scripts.Core.Languages;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Core
 {
     public class KeyboardRowManager : MonoBehaviour
     {
@@ -17,18 +19,23 @@ namespace VirtualKeyboard
         /*
         * Changes the text field of each button. Includes upper/lower case conversion.
         */
-        private void ChangeButtonText(string[] languageString, bool capsLockOn = false)
+        private void ChangeButtonText(IReadOnlyList<string> languageString, bool capsLockOn = false)
         {
             for (int childNumber = 0; childNumber < transform.childCount; childNumber++)
             {
                 if (capsLockOn)
                 {
-                    transform.GetChild(childNumber).GetChild(0).GetComponent<TextMeshProUGUI>().text = languageString[childNumber];
+                    transform.GetChild(childNumber)
+                        .GetChild(0)
+                        .GetComponent<TextMeshProUGUI>()
+                        .text = languageString[childNumber];
                 }
                 else
                 {
                     transform.GetChild(childNumber).GetChild(0).GetComponent<TextMeshProUGUI>().text =
-                        languageString[childNumber].Length > 1 ? languageString[childNumber] : languageString[childNumber].ToLower();
+                        languageString[childNumber].Length > 1
+                            ? languageString[childNumber]
+                            : languageString[childNumber].ToLower();
                 }
             }
         }
@@ -36,9 +43,9 @@ namespace VirtualKeyboard
         /*
         * Changes the object's name in the editor to match that of its text.
         */
-        private void NameButtonObject(string[] languageString, bool capsLockOn)
+        private void NameButtonObject(IReadOnlyList<string> languageString, bool capsLockOn)
         {
-            for (int childNumber = 0; childNumber < transform.childCount; childNumber++)
+            for (var childNumber = 0; childNumber < transform.childCount; childNumber++)
             {
                 if (capsLockOn)
                 {

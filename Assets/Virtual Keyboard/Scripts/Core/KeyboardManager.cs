@@ -1,7 +1,8 @@
-﻿using RotaryHeart.Lib.SerializableDictionary;
-using UnityEngine;
+﻿using UnityEngine;
+using Virtual_Keyboard.Rotary_Heart.SerializableDictionary;
+using Virtual_Keyboard.Scripts.Core.Languages;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Core
 {
     [DisallowMultipleComponent]
     public partial class KeyboardManager : MonoBehaviour
@@ -9,12 +10,18 @@ namespace VirtualKeyboard
         [SerializeField] KeyboardLanguageEnum currentLanguage = KeyboardLanguageEnum.English;
         [System.Serializable] class LanguagesDictionary : SerializableDictionaryBase<KeyboardLanguageEnum, Language> { };
         [SerializeField] LanguagesDictionary languagesDictionary = new LanguagesDictionary();
-        bool capsToggle = false, alternateKeysToggle = false;
-        KeyboardLanguageEnum previousLanguage = KeyboardLanguageEnum.None;
+        bool _capsToggle = false, _alternateKeysToggle = false;
+        KeyboardLanguageEnum _previousLanguage = KeyboardLanguageEnum.None;
+        KeyboardRowManager[] _keyboardRowManagers;
 
 #if UNITY_EDITOR
+        private void Start()
+        {
+            _keyboardRowManagers = GetComponentsInChildren<KeyboardRowManager>();
+        }
+
         [System.Runtime.InteropServices.DllImport("USER32.dll")] public static extern short GetKeyState(int nVirtKey);
-        bool IsCapsLockOn => ((GetKeyState(0x14) & 1) > 0 || capsToggle);
+        bool IsCapsLockOn => (GetKeyState(0x14) & 1) > 0 || _capsToggle;
 #else
         bool IsCapsLockOn => IsCapsOnWebGL();
 #endif
@@ -26,28 +33,28 @@ namespace VirtualKeyboard
                 if (currentLanguage == KeyboardLanguageEnum.Symbols)
                 {
                     //Revert to prev language
-                    currentLanguage = previousLanguage;
-                    previousLanguage = KeyboardLanguageEnum.None;
+                    currentLanguage = _previousLanguage;
+                    _previousLanguage = KeyboardLanguageEnum.None;
                 }
                 else
                 {
                     //Change to symbols and remember language
-                    previousLanguage = currentLanguage;
+                    _previousLanguage = currentLanguage;
                     currentLanguage = language;
                 }
             }
             else if (language != KeyboardLanguageEnum.None)
             {
                 currentLanguage = language;
-                previousLanguage = KeyboardLanguageEnum.None;
+                _previousLanguage = KeyboardLanguageEnum.None;
             }
             else
             {
                 //Temporary
                 if (currentLanguage == KeyboardLanguageEnum.Symbols)
                 {
-                    currentLanguage = previousLanguage;
-                    previousLanguage = KeyboardLanguageEnum.None;
+                    currentLanguage = _previousLanguage;
+                    _previousLanguage = KeyboardLanguageEnum.None;
                 }
                 currentLanguage = currentLanguage == KeyboardLanguageEnum.Greek ? KeyboardLanguageEnum.English : KeyboardLanguageEnum.Greek;
             }
@@ -64,31 +71,30 @@ namespace VirtualKeyboard
 
         public void ToggleCaps()
         {
-            capsToggle = !capsToggle;
+            _capsToggle = !_capsToggle;
 
             RefreshKeyboard();
         }
 
         public void ToggleAlternateKeys()
         {
-            alternateKeysToggle = !alternateKeysToggle;
+            _alternateKeysToggle = !_alternateKeysToggle;
 
             RefreshKeyboard();
         }
 
         public void RefreshKeyboard()
         {
-            print("Refreshing Keyboard");
             languagesDictionary.TryGetValue(currentLanguage, out var languageAsset);
-            foreach (KeyboardRowManager manager in GetComponentsInChildren<KeyboardRowManager>())
+            foreach (var manager in _keyboardRowManagers)
             {
-                manager.RefreshRow(languageAsset, IsCapsLockOn, alternateKeysToggle);
+                manager.RefreshRow(languageAsset, IsCapsLockOn, _alternateKeysToggle);
             }
         }
 
         private bool IsCapsOnWebGL()
         {
-            return capsToggle;
+            return _capsToggle;
         }
     }
 }

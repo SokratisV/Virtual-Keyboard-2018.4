@@ -1,22 +1,21 @@
 ﻿using TMPro;
 using UnityEngine;
+using Virtual_Keyboard.Scripts.Misc;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Visuals
 {
     public class SendAnimation : MonoBehaviour
     {
-        TextMeshProUGUI text;
-        Animator animator;
+        Animator _animator;
 
         private void Start()
         {
-            text = GetComponent<TextMeshProUGUI>();
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
         }
 
         public void AnimateText()
         {
-            animator?.Play("TextSendAnimation");
+            _animator.Play("TextSendAnimation");
         }
 
         // Animation event

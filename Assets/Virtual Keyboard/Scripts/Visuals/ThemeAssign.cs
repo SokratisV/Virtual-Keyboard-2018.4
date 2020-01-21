@@ -1,24 +1,25 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Visuals
 {
     public class ThemeAssign : MonoBehaviour
     {
-        [SerializeField] ThemeComponents component;
+        [FormerlySerializedAs("component")] [SerializeField] ThemeComponents componentThemeType;
 
-        public ThemeComponents Component { get => component; }
+        public ThemeComponents ComponentThemeType => componentThemeType;
 
         public void ApplyTheme(ColorPallet pallet)
         {
-            if (component == ThemeComponents.Text)
+            if (componentThemeType == ThemeComponents.Text)
             {
-                GetComponent<TextMeshProUGUI>().color = pallet.GetColor(component);
+                GetComponent<TextMeshProUGUI>().color = pallet.GetColor(componentThemeType);
             }
             else
             {
-                GetComponent<Image>().color = pallet.GetColor(component);
+                GetComponent<Image>().color = pallet.GetColor(componentThemeType);
             }
         }
     }

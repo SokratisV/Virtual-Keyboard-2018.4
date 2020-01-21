@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace VirtualKeyboard
+namespace Virtual_Keyboard.Scripts.Misc
 {
     public class EnableInputField : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace VirtualKeyboard
         private void Start()
         {
             //remove
-            GetComponentInChildren<TextMeshProUGUI>().text = (inputField.IsSubscribed).ToString();
+            GetComponentInChildren<TextMeshProUGUI>().text = inputField.IsSubscribed.ToString();
         }
 
         public void Toggle()

@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleImage : MonoBehaviour
+namespace Virtual_Keyboard.Scripts.Visuals
 {
-    public void ToggleImageMethod()
+    public class ToggleImage : MonoBehaviour
     {
-        Image image = GetComponent<Image>();
-        image.enabled = !image.enabled;
+        public void ToggleImageMethod()
+        {
+            var image = GetComponent<Image>();
+            image.enabled = !image.enabled;
+        }
     }
 }

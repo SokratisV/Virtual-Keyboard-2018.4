@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace RotaryHeart.Lib.SerializableDictionary
+namespace Virtual_Keyboard.Rotary_Heart.SerializableDictionary.Editor
 {
     public class PreferencesWindow
     {
