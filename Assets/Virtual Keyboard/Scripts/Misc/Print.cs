@@ -1,27 +1,23 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Virtual_Keyboard.Scripts.Misc
 {
     public class Print : MonoBehaviour
     {
-        const string filePath = "C:/Users/Sokratis/Desktop";
-        const string imagePath = "C:/Users/Sokratis/Desktop";
-        string path = filePath + "/pdf.pdf";
-
-        private void Start()
-        {
-            // GenerateFile();
-        }
+        private const string ImagePath = "C:/Users/Sokratis/Desktop/b.jpg";
+        private const string Path = "C:/Users/Sokratis/Desktop/test.txt";
 
         public void GenerateFile()
         {
-            if (File.Exists(path))
-                File.Delete(path);
+            if (File.Exists(Path))
+                File.Delete(Path);
 
-            using (var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            using (var fileStream = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 var document = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
                 var writer = PdfWriter.GetInstance(document, fileStream);
@@ -30,26 +26,32 @@ namespace Virtual_Keyboard.Scripts.Misc
                 {
                     document.Open();
                     document.Add(new Paragraph("This is the header"));
-                    iTextSharp.text.Image png = iTextSharp.text.Image.GetInstance(imagePath + "/Virtual Keyboard.png");
+                    var png = Image.GetInstance(ImagePath);
                     png.ScalePercent(24f); //convert to 300 dpi
                     document.Add(png);
                     document.Add(new Paragraph("This is the body"));
                 }
-                catch (DocumentException dex) { throw (dex); }
-                catch (IOException ioex) { throw (ioex); }
-                finally { document.Close(); writer.Close(); }
-
+                catch (DocumentException)
+                {
+                }
+                catch (IOException)
+                {
+                }
+                finally
+                {
+                    document.Close();
+                    writer.Close();
+                }
             }
-            // PrintFiles();
+
+            PrintFiles();
         }
 
-        void PrintFiles()
+        public void PrintFiles()
         {
-            Debug.Log(path);
-            if (path == null)
-                return;
+            Debug.Log(Path);
 
-            if (File.Exists(path))
+            if (File.Exists(Path))
             {
                 Debug.Log("file found");
             }
@@ -58,15 +60,25 @@ namespace Virtual_Keyboard.Scripts.Misc
                 Debug.Log("file not found");
                 return;
             }
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
-            process.StartInfo.UseShellExecute = true;
-            process.StartInfo.FileName = path;
-            //process.StartInfo.Verb = "print";
+            
+            var startInfo = new ProcessStartInfo(Path);
+            foreach (var verb in startInfo.Verbs)
+            {
+                print(verb);
+            }
+            var process = new Process
+            {
+                StartInfo =
+                {
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    UseShellExecute = true,
+                    FileName = Path,
+                    Verb = "Print"
+                }
+            };
 
             process.Start();
-            print("show'em");
             //process.WaitForExit();
         }
     }
